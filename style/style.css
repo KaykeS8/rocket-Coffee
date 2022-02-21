@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --backgrond: #000;
+    --text-color: #FFF;
+    --button: #8257E5;
+    --border: #29292E;
+    --border-menu-mobile: #A8A8B3;
+    --text-color-menu-mobile: #E1E1E6;
+    --font: 'Manrope', sans-serif;
+}
+
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+}
+
+body {
+    font-size: 1.6rem;
+    min-height: 100vh;
+    line-height: 1.5;
+    background-color: var(--backgrond);
+    font-family: var(--font);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+[data-menu="menu-open"] {
+    display: none;
+}
+
+.logo-mobile {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* HEADER */
+
+.header {
+    padding: 4rem;
+    width: 100%;
+}
+
+.nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav a {
+    font-size: 1.4rem;
+    margin-right: 3rem;
+}
+
+.nav a:hover {
+    color: var(--button);
+    transition: .4s;
+}
+
+.nav a:last-child {
+    margin: 0;
+}
+
+.get-coffee {
+    padding: .7rem 3rem;
+    border: 1px solid var(--button);
+    border-radius: .6rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.get-coffee:hover {
+    background-color: var(--button);
+    transition: .3s;
+}
+
+@media screen and (max-width:700px) {
+
+    /* MENU MOBILE */
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: block;
+    }
+
+    .burger::before {
+        content: "";
+        width: 3rem;
+        border-top: 2px solid var(--button);
+        display: block;
+        transition: .4s;
+        position: relative;
+    }
+
+    .burger::after {
+        content: '';
+        display: block;
+        width: 1.5rem;
+        border-top: 2px solid var(--button);
+        margin: .5rem 1.4rem;
+        transition: .4s;
+        position: relative;
+    }
+
+    .burger.close::after {
+        transform: rotate(45deg);
+        width: 2rem;
+        top: -.7rem;
+    }
+
+    .burger.close::before {
+        transform: rotate(-45deg);
+        width: 2rem;
+        left: 1.3rem;
+    }
+
+    .nav, .get-coffee {
+        display: none;
+    }
+
+    [data-menu="menu-open"] {
+        display: block;
+        cursor: pointer;
+    }
+
+    [data-menu="list"] {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 0;
+        background-color: var(--backgrond);
+        top: 8rem;
+        left: 0;
+        z-index: 1000;
+        visibility: hidden;
+        transition: .4s;
+        overflow-y: hidden;
+    }
+
+    [data-menu="list"].open {
+        height: calc(100vh - 8rem);
+        visibility: visible;
+    }
+
+    [data-menu="list"] a {
+        display: block;
+        padding: 1rem;
+        margin: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav a:hover {
+        border-left: 2px solid var(--button);
+    }
+}
+
